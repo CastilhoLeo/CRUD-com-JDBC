@@ -9,7 +9,14 @@ public class CadastroMain {
 		u1.setIdade(31);
 		u1.setEmail("castilhogb@hotmail.com");
 		
-		UsuarioDAO.InserirDados(u1);
+		//UsuarioDAO.InserirDados(u1);
+		
+		//UsuarioDAO.consultarDados();
+		
+		//UsuarioDAO.alterarDados();
+		
+		//UsuarioDAO.excluirDados();
+		
 		
 	}
 
