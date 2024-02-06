@@ -60,7 +60,7 @@ public class UsuarioDAO {
 			ResultSet rs = stm.executeQuery();
 			while(rs.next())
 			{
-				System.out.printf("id: %d - nome: %s - idade: %d - email: %s", rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4));
+				System.out.printf("id: %d - nome: %s - idade: %d - email: %s%n", rs.getInt(1), rs.getString(2), rs.getInt(3), rs.getString(4));
 			}
 		}
 		catch(Exception e)
@@ -86,19 +86,54 @@ public class UsuarioDAO {
 	
 		Connection con = null;
 		PreparedStatement stm = null;
-		String sql = "UPDATE usuarios SET nome = ? WHERE id = ?";
+		
+		String sqlNome = "UPDATE usuarios SET nome = ? WHERE id = ?";
+		String sqlIdade = "UPDATE usuarios SET idade = ? WHERE id = ?";
+		String sqlEmail = "UPDATE usuarios SET email = ? WHERE id = ?";
+	
 		Scanner input= new Scanner(System.in);
 		
 		try
 		{
 		con = ConectarBD.conectar();
-		stm = con.prepareStatement(sql);
-		System.out.println("Digite o id a ser alterado: ");
-		stm.setInt(2,input.nextInt());
 		
-		System.out.println("Digite o novo nome: ");
-		stm.setString(1, input.next());
-		stm.execute();	
+		System.out.println("Digite o id a ser alterado: ");
+		int id = input.nextInt();
+		
+		System.out.printf("Selecione o campo a ser atualizado:%n"
+				+ "1 - Nome%n"
+				+ "2 - Idade%n"
+				+ "3 - Email%n ");
+		int op = input.nextInt();
+		
+		if (op==1)
+		{
+			stm.setInt(2, op);
+			stm = con.prepareStatement(sqlNome);
+			System.out.println("Digite o novo nome: ");
+			stm.setString(1, input.next());
+		}
+		
+		else if (op ==2)
+		{
+			stm.setInt(2, op);
+			stm = con.prepareStatement(sqlIdade);
+			System.out.println("Digite a nova idade: ");
+			stm.setInt(1, input.nextInt());
+		}
+			
+		else if (op==3)
+		{
+			stm.setInt(2, op);
+			stm = con.prepareStatement(sqlEmail);
+			System.out.println("Digite o novo email: ");
+			stm.setString(1, input.next());
+	
+			
+		}
+		
+		stm.execute();
+			
 
 		}
 		catch(Exception e)
