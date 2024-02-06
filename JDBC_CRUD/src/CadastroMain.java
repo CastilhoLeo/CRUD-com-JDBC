@@ -6,9 +6,7 @@ public class CadastroMain {
 		
 	Scanner input = new Scanner(System.in);
 		
-		int opcao;
-
-		
+		int opcao;	
 		do
 		{
 			System.out.printf("Selecione a opção desejada:%n"
@@ -49,17 +47,12 @@ public class CadastroMain {
 				break;
 			case 4:
 				UsuarioDAO.excluirDados();
+				break;
 				
 			}
 			
 		}
 		while (opcao!=5);
-		
-
-		
-		///
-		
-		//
 		
 		
 	}
