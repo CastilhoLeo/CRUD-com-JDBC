@@ -53,8 +53,7 @@ public class CadastroMain {
 			
 		}
 		while (opcao!=5);
-		
-		
+			
 	}
 
 }
